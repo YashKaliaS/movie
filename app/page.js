@@ -1,12 +1,19 @@
 'use client'
 import axios from 'axios'
+// import { headers } from 'next/headers';
 import React, { useState, useEffect } from 'react'
 
 function App() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get('https://dummyapi.online/api/movies')
+    axios.get('https://dummyapi.online/api/movies',
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+      
+    })
       .then(res => {
         console.log(res);
         setMovies(res.data);
